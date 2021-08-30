@@ -1,0 +1,146 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+	Version="10.0"
+	VendorName="SlickEdit"
+	WorkingDir=".">
+	<Config
+		Name="Release"
+		OutputFile=""
+		CompilerConfigName="Latest Version">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw">
+				<Exec/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='rsh zeus -l %(USERNAME) "slick make"'/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				SaveOption="SaveNone"
+				RunFromDir="%rw">
+				<Exec/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				SaveOption="SaveNone"
+				RunFromDir="%rw">
+				<Exec CmdLine='"codgen.exe"'/>
+			</Target>
+		</Menu>
+		<PreBuildCommands>
+			<Exec CmdLine="echo %rp &gt; Z:\.slickbuild"/>
+		</PreBuildCommands>
+	</Config>
+	<Config Name="Win32">
+		<Menu>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw"
+				CaptureOutputWith="ProcessBuffer">
+				<Exec CmdLine="win32build.bat codgen.exe"/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				SaveOption="SaveNone"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%&lt;e.exe"'/>
+			</Target>
+			<Target
+				Name="Clean"
+				MenuCaption="&amp;Clean"
+				RunFromDir="%rw"
+				CaptureOutputWith="ProcessBuffer">
+				<Exec CmdLine="win32build.bat clean"/>
+			</Target>
+			<Target
+				Name="Clean Generated Maps"
+				MenuCaption="Clean &amp;Generated Maps"
+				CaptureOutputWith="ProcessBuffer"
+				RunFromDir="%rw">
+				<Exec CmdLine="win32build.bat genclean"/>
+			</Target>
+		</Menu>
+	</Config>
+	<Files>
+		<Folder
+			Name="Source Files"
+			Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl">
+			<F N="catenary.c"/>
+			<F N="codgen.c"/>
+			<F N="codgen_random.c"/>
+			<F N="map.c"/>
+			<F N="mapfile_parser.c"/>
+			<F N="mazemaker.c"/>
+			<F N="output_terrain.c"/>
+			<F N="primitives.c"/>
+			<F N="region.c"/>
+			<F N="region_maker.c"/>
+			<F N="rmod_bridge.c"/>
+			<F N="rmod_buildings.c"/>
+			<F N="rmod_forest.c"/>
+			<F N="rmod_graveyard.c"/>
+			<F N="rmod_maze.c"/>
+			<F N="rmod_mound.c"/>
+			<F N="rmod_rocks.c"/>
+			<F N="rmod_trench.c"/>
+			<F N="rmods.c"/>
+			<F N="stat.c"/>
+			<F N="taken_area.c"/>
+			<F N="terrain.c"/>
+			<F N="xml.c"/>
+		</Folder>
+		<Folder
+			Name="Header Files"
+			Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.inc;*.sh;*.cpy;*.if">
+			<F N="catenary.h"/>
+			<F N="codgen.h"/>
+			<F N="codgen_random.h"/>
+			<F N="map.h"/>
+			<F N="mapfile_parser.h"/>
+			<F N="mazemaker.h"/>
+			<F N="output_terrain.h"/>
+			<F N="primitives.h"/>
+			<F N="region.h"/>
+			<F N="region_maker.h"/>
+			<F N="rmod_buildings.h"/>
+			<F N="rmod_maze.h"/>
+			<F N="rmods.h"/>
+			<F N="stat.h"/>
+			<F N="taken_area.h"/>
+			<F N="terrain.h"/>
+			<F N="xml.h"/>
+		</Folder>
+		<Folder
+			Name="Resource Files"
+			Filters="*.ico;*.cur;*.dlg"/>
+		<Folder
+			Name="Bitmaps"
+			Filters="*.bmp"/>
+		<Folder
+			Name="Other Files"
+			Filters=""/>
+	</Files>
+</Project>

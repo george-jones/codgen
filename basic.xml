@@ -1,0 +1,51 @@
+<cod2gen>
+
+    <!-- Conventions:
+        Elements with a chance="#" mean that which one is used will be determined
+        randomly, with # being the relative frequency of choosing that particular
+        item.  The default chance is "1".  If you have an item of chance="2" then
+        it will be twice as likely to be chosen as one with a chance="1".  You can
+        also use non-integer values (1.5 etc).
+    -->
+    
+    <!-- map dimensions, basically how big is the skybox.  texture nodes are for
+    the bounding wall. -->
+    <map x_size="4500" y_size="3000" z_size="1400" outer_wall_height="350"
+        ctf_flags="false" spawn_ctf="false" spawn_tdm="false" spawn_dm="false" hq_radios="false">
+        <texture name="duhoc_concrete_multi" />
+        <texture name="egypt_concrete_interiorbunker2" />
+    </map>
+    
+    <!-- sky.  this might be a good place to put lighting info too, maybe each
+     texture would have a list of associated variable names and values.
+    -->
+    <sky height="1000">
+        <texture name="sky_88ridge" />
+        <texture name="sky_beltot" />
+        <texture name="sky_bergstein" />
+        <texture name="sky_breakout" />
+        <texture name="sky_carchase" />
+        <texture name="sky_cityhall" />
+        <texture name="sky_crossroads" />
+        <texture name="sky_dawnville2" />
+        <texture name="sky_decoy" />
+        <texture name="sky_silotown" />		
+    </sky>
+	
+	<!-- terrain information.
+	     produced terrain will be x_res by y_res points
+	     height is the number of units from the highest point to the lowest point.
+	     smoothness should be between 0 and 1
+	-->
+    <terrain x_res="16" y_res="16" height="300" smoothness="0.65">
+        <texture name="duhoc_grass_crater" />
+        <texture name="duhoc_grass_green3" />
+        <texture name="duhoc_grass_yellow1" />
+        <texture name="mtl_caen_fullgrass_01" />
+        <texture name="mtl_caen_grass_01" />
+        <texture name="mtl_caen_grass_02" />
+        <texture name="mtl_duhoc_grass02" />
+        <texture name="mtl_silotown_grass02" />		
+    </terrain>
+
+</cod2gen>

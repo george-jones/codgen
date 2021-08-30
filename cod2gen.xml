@@ -1,0 +1,90 @@
+<cod2gen>
+
+	<!-- Conventions:
+	  Elements with a chance="#" mean that which one is used will be determined
+	  randomly, with # being the relative frequency of choosing that particular
+	  item.  All the items in a particular list should add up to a total chance
+	  of 1.0.  If not every item in a list is given a chance, all are assumed
+	  to be equal.
+	-->
+
+	<!-- map dimensions, basically how big is the skybox -->	
+	<map x_size="4500" y_size="3000" z_size="1350" outer_wall_height="300" />
+	
+	<!-- allowed sky textures -->	
+	<sky>
+		<texture name="sky_silotown" chance="f" />
+	</sky>
+	
+	<!-- terrain information.
+	     produced terrain will be x_res by y_res points
+	     height is the number of units from the highest point to the lowest point.
+	     smoothness should be between 0 and 1
+	-->
+	<terrain x_res="50" y_res="50" height="250" smoothness="0.65">
+		<texture name="duhoc_grass_green3" chance="f" />
+	</terrain>
+	
+	<!-- different region types that you will allow -->
+	<regions>
+	
+		<!-- rope bridge with minefield gorge carved out below it -->
+		<bridges chance="0.25" minefield="true" water="true">
+			<water texture="water_duhoc" />
+			<rope texture="egypt_sandblown01" />
+			<plank texture="mtl_caen_floor_int_01" length="50" width="20" separation="12" />
+		</bridges>
+		
+		<!-- patch of multi-story buildings good for jumping and sniping -->
+		<buildings chance="0.25" unit_size="264" alley_size="42">
+			<texture name="egypt_concrete_interiorbunker2" />
+			<texture name="egypt_brick_red_generic1_1" />
+			<texture name="duhoc_concrete_multi" />
+			<texture name="egypt_plaster_interiorwall4" />
+			<texture name="mtl_caen_wall_churchstone_01" />
+		</buildings>
+		
+		<!-- trees and brush -->
+		<forest chance="0.25" allow_resize="true">
+			<model name="xmodel/tree_pine_sm_b" />
+			<model name="xmodel/tree_pine_lg_b" />
+			<model name="xmodel/tree_pine_xl_b" />
+			<model name="xmodel/tree_river_birch_lg_a" />
+			<model name="xmodel/tree_grey_oak_sm_a" />
+			<model name="xmodel/tree_grey_oak_med_a" />
+			<model name="xmodel/tree_grey_oak_lg_a" />
+			<model name="xmodel/tree_grey_oak_xl_a" />
+		</forest>
+		
+		<!-- jaggy rock formations that come out of the ground -->
+		<rocks chance="0.25" smoothness="n">
+			<texture name="egypt_dessertrock_top_01_night" />
+		</rocks>
+	</regions>
+	
+	<!-- random models dispersed throughout the map to add some flavor.  We need to know how big a model
+	     is (radius, height) so that enough space can be reserved for it.  The "repeat" value allows
+	     for making a small patch of the model (good for grasses, bad for say, tractors) -->
+	<models limit="1000">
+		<model name="prop_haybale" radius="34" height="25" chance="0.0476" repeat="1" />
+		<model name="prop_tractor" radius="108" height="89" chance="0.0476" repeat="0" />
+		<model name="prop_woodstack1" radius="118" height="48" chance="0.0476" repeat="0" />
+		<model name="brush_newgrass_squareclump" radius="84" height="42" chance="0.0476" repeat="5" />
+		<model name="brush_newgrasstuft_shortwide" radius="24" height="24" chance="0.0476" repeat="4" />
+		<model name="brush_toujanebigbushy" radius="80" height="68" chance="0.0952" repeat="0" />
+		<model name="brush_grassflowerplants_squareclump" radius="84" height="42" chance="0.0952" repeat="3" />
+		<model name="brush_grassflowerplants_triangularclump" radius="78" height="33" chance="0.1429" repeat="3" />
+		<model name="brush_shortnewgrass_squareclumpshort" radius="44" height="19" chance="0.19" repeat="10" />
+		<model name="brush_grasslowline" radius="46" height="14" chance="0.2381" repeat="10" />
+	</models>
+	
+	<!-- The ladders are modeled as two brushes for rails and a brush for every rung. The "lip" value
+	     is how many units above where the ladder reaches that it peeks up over the top. -->
+	<ladders width="40" thickness="4" lip="2">
+		<texture name="stalingradwinter_rustbar_trim02" />
+		<texture name="stalingradwinter_pipe_b" />
+		<texture name="toujane_metal_pipe1" />
+		<texture name="dawnville2_wood_floor01" />
+		<texture name="egypt_wood_stair1side" />
+	</ladders>
+</cod2gen>

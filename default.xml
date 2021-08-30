@@ -1,0 +1,153 @@
+<cod2gen>
+
+    <!-- Conventions:
+        Elements with a chance="#" mean that which one is used will be determined
+        randomly, with # being the relative frequency of choosing that particular
+        item.  The default chance is "1".  If you have an item of chance="2" then
+        it will be twice as likely to be chosen as one with a chance="1".  You can
+        also use non-integer values (1.5 etc).
+    -->
+    
+    <!-- map dimensions, basically how big is the skybox.  texture nodes are for
+    the bounding wall. -->	
+    <map x_size="4500" y_size="3000" z_size="1400" outer_wall_height="350">
+        <texture name="duhoc_concrete_multi" />
+        <texture name="egypt_concrete_interiorbunker2" />
+    </map>
+    
+    <!-- sky.  this might be a good place to put lighting info too, maybe each
+     texture would have a list of associated variable names and values.
+    -->
+    <sky>
+        <texture name="sky_88ridge" />
+        <texture name="sky_beltot" />
+        <texture name="sky_bergstein" />
+        <texture name="sky_breakout" />
+        <texture name="sky_carchase" />
+        <texture name="sky_cityhall" />
+        <texture name="sky_crossroads" />
+        <texture name="sky_dawnville2" />
+        <texture name="sky_decoy" />
+        <texture name="sky_silotown" />		
+    </sky>
+	
+	<!-- terrain information.
+	     produced terrain will be x_res by y_res points
+	     height is the number of units from the highest point to the lowest point.
+	     smoothness should be between 0 and 1
+	-->
+    <terrain x_res="16" y_res="16" height="300" smoothness="0.65">
+        <texture name="duhoc_grass_crater" />
+        <texture name="duhoc_grass_green3" />
+        <texture name="duhoc_grass_yellow1" />
+        <texture name="mtl_caen_fullgrass_01" />
+        <texture name="mtl_caen_grass_01" />
+        <texture name="mtl_caen_grass_02" />
+        <texture name="mtl_duhoc_grass02" />
+        <texture name="mtl_silotown_grass02" />		
+    </terrain>
+		
+    <!-- different region types that you will allow -->
+    <regions num="10">
+	
+        <!-- rope bridge with minefield gorge carved out below it -->				
+        <bridges chance="2">
+            <minefield />
+            <water texture="water_duhoc" />
+            <rope texture="egypt_sandblown01" />
+            <plank texture="mtl_caen_floor_int_01" length="50" width="22" separation="12" />
+        </bridges>
+		
+        <!-- patch of multi-story buildings good for jumping and sniping -->		
+        <buildings chance="5" unit_size="264" alley_size="42" wall_thickness="10"
+            first_height="160" second_height="100" third_height="80"
+            rail_height="40" rail_thickness="4" walkway_size="62">
+            <texture name="mtl_hill400_wall_ext_01" />
+            <texture name="egypt_brick_red_generic1_1" />
+            <texture name="duhoc_concrete_multi" />
+            <texture name="egypt_plaster_interiorwall4" />
+            <texture name="mtl_caen_wall_churchstone_01" />
+        </buildings>
+		
+        <!-- trees and brush -->
+        <forest chance="4" trees_per_acre="325" allow_resize="true" height_percent_mean="0.7" height_percent_stdev="0.3">
+            <model name="xmodel/tree_pine_sm_b" />
+            <model name="xmodel/tree_pine_lg_b" />
+            <model name="xmodel/tree_pine_xl_b" />
+            <model name="xmodel/tree_river_birch_lg_a" />
+            <model name="xmodel/tree_grey_oak_sm_a" />
+            <model name="xmodel/tree_grey_oak_med_a" />
+            <model name="xmodel/tree_grey_oak_lg_a" />
+            <model name="xmodel/tree_grey_oak_xl_a" />
+        </forest>		
+		
+        <!-- jaggy rock formations that come out of the ground -->
+        <rocks chance="2" smoothness="0.3">
+            <texture name="egypt_dessertrock_top_01_night" />
+            <texture name="egypt_dessertrock_01" />
+            <texture name="egypt_dessertrock_top_01" />
+            <texture name="tunisia_mountain_red" />
+        </rocks>
+        
+        <!-- randomly dispersed tombstones -->        		
+        <graveyard chance="1" graves_per_acre="300">
+            <model name="xmodel/prop_tombstone1" /> 
+            <model name="xmodel/prop_tombstone2" /> 
+            <model name="xmodel/prop_tombstone3" /> 
+            <model name="xmodel/prop_tombstone4" /> 
+            <model name="xmodel/prop_tombstone5" /> 
+            <model name="xmodel/prop_tombstone6" /> 
+            <model name="xmodel/prop_tombstone7" /> 
+            <model name="xmodel/prop_tombstone8" /> 
+            <model name="xmodel/prop_tombstone9" /> 
+            <model name="xmodel/prop_tombstone10" /> 
+            <model name="xmodel/prop_tombstone11" />
+        </graveyard>
+
+        <!-- path carved out of the terrain -->
+        <trench chance="3" width="80" depth="60">
+            <texture name="duhoc_dirt_ground3" />
+            <texture name="duhoc_dirt_ground5" />
+            <texture name="egypt_roughdirt_05" />
+            <texture name="egypt_trench_ground_dirt" />
+            <texture name="egypt_trench_ground_worn_dirt" />
+            <texture name="tunisia_trench_floor" />			
+        </trench>
+
+        <!-- dirt pile -->
+        <mound chance="1" >
+            <texture name="duhoc_dirt_ground3" />
+            <texture name="duhoc_dirt_ground5" />
+            <texture name="egypt_roughdirt_05" />
+            <texture name="egypt_trench_ground_dirt" />
+            <texture name="egypt_trench_ground_worn_dirt" />
+            <texture name="tunisia_trench_floor" />			
+        </mound>
+
+    </regions>
+	
+	<!-- random models dispersed throughout the map to add some flavor.  We need to know how big a model
+	     is (radius, height) so that enough space can be reserved for it.  The "repeat" value allows
+	     for making a small patch of the model (good for grasses, bad for say, tractors) -->
+    <models limit="500">
+        <model name="prop_haybale" radius="34" height="25" chance="2" repeat="1" />
+        <model name="prop_woodstack1" radius="118" height="48" chance="2" repeat="0" />    
+        <model name="brush_newgrass_squareclump" radius="84" height="42" chance="2" repeat="5" />
+        <model name="brush_newgrasstuft_shortwide" radius="24" height="24" chance="2" repeat="4" />
+        <model name="brush_toujanebigbushy" radius="80" height="68" chance="4" repeat="0" />
+        <model name="brush_grassflowerplants_squareclump" radius="84" height="42" chance="4" repeat="3" />
+        <model name="brush_grassflowerplants_triangularclump" radius="78" height="33" chance="6" repeat="3" />
+        <model name="brush_shortnewgrass_squareclumpshort" radius="44" height="19" chance="8" repeat="10" />
+        <model name="brush_grasslowline" radius="46" height="14" chance="8" repeat="16" />
+    </models>
+	
+	<!-- The ladders are modeled as two brushes for rails and a brush for every rung. The "lip" value
+	     is how many units above where the ladder reaches that it peeks up over the top. -->
+    <ladders width="40" thickness="4" lip="4">
+        <texture name="stalingradwinter_rustbar_trim02" />
+        <texture name="stalingradwinter_pipe_b" />
+        <texture name="toujane_metal_pipe1" />
+        <texture name="dawnville2_wood_floor01" />
+        <texture name="egypt_wood_stair1side" />
+    </ladders>
+</cod2gen>

@@ -1,0 +1,131 @@
+<cod2gen>
+
+    <!-- Conventions:
+        Elements with a chance="#" mean that which one is used will be determined
+        randomly, with # being the relative frequency of choosing that particular
+        item.  The default chance is "1".  If you have an item of chance="2" then
+        it will be twice as likely to be chosen as one with a chance="1".  You can
+        also use non-integer values (1.5 etc).
+    -->
+    
+    <!-- Set the teams for this map and their models -->
+    <game>
+	    <teams>
+	    	<allies>
+	    		<team name="russian">
+	    			<model name="coats" />
+	    			<model name="padded" />
+	    		</team>
+	    	</allies>
+	    	<axis>
+	    		<team name="german">
+	    			<model name="winterlight" />
+	    			<model name="winterdark" />
+	    		</team>
+	    	</axis>
+	    </teams>
+	    <gametype name="hq" />
+	    <gametype name="dm" />
+	    <gametype name="tdm" />
+	    <gametype name="ctf" />
+	 </game>
+    
+    <!-- Set ambient sound track -->
+    <ambient>
+    	<sound name="russia" />
+    </ambient>
+    
+    <!-- map dimensions, basically how big is the skybox.  texture nodes are for
+    the bounding wall. -->	
+    <map x_size="4500" y_size="3000" z_size="1400" outer_wall_height="350">
+        <texture name="duhoc_concrete_multi" />
+    </map>
+    
+    <!-- sky.  this might be a good place to put lighting info too, maybe each
+     texture would have a list of associated variable names and values.
+    -->
+    <sky height="1000">
+        <texture name="sky_decoy" />
+        <texture name="sky_downtown_sniper" />
+        <texture name="sky_moscow" />
+    </sky>
+	
+	<!-- terrain information.
+	     produced terrain will be x_res by y_res points
+	     height is the number of units from the highest point to the lowest point.
+	     smoothness should be between 0 and 1
+	-->
+    <terrain x_res="16" y_res="16" height="106" smoothness="0.65">
+        <texture name="stalingradwinter_snow01" />
+        <texture name="stalingradwinter_snow02" />
+    </terrain>
+		
+    <!-- different region types that you will allow -->
+    <regions num="5">
+	
+        <!-- patch of multi-story buildings good for jumping and sniping -->		
+        <buildings chance="10" unit_size="360" alley_size="100" wall_thickness="10"
+            first_height="160" second_height="0" third_height="0"
+            rail_height="36" rail_thickness="4" walkway_size="80">
+            <texture name="stalingradwinter_brick02" />
+            <texture name="stalingradwinter_brick03" />
+            <texture name="stalingradwinter_brick04" />                        
+        </buildings>
+		
+        <!-- trees and brush -->
+        <forest chance="4" trees_per_acre="650" allow_resize="true" height_percent_mean="0.7" height_percent_stdev="0.3">
+            <model name="xmodel/tree_snow_pine_sm_c" />
+            <model name="xmodel/tree_snow_pine_lg_c" />
+            <model name="xmodel/tree_snow_pine_xl_c" />
+            <model name="xmodel/tree_snow_river_birch_xl_c" />
+            <model name="xmodel/tree_snow_river_birch_lg_c" />
+            <model name="xmodel/tree_snow_river_birch_med_c" />
+        </forest>		
+		
+        <!-- randomly dispersed tombstones -->        		
+        <graveyard chance="1" graves_per_acre="300">
+            <model name="xmodel/prop_tombstone1" /> 
+            <model name="xmodel/prop_tombstone2" /> 
+            <model name="xmodel/prop_tombstone3" /> 
+            <model name="xmodel/prop_tombstone4" /> 
+            <model name="xmodel/prop_tombstone5" /> 
+            <model name="xmodel/prop_tombstone6" /> 
+            <model name="xmodel/prop_tombstone7" /> 
+            <model name="xmodel/prop_tombstone8" /> 
+            <model name="xmodel/prop_tombstone9" /> 
+            <model name="xmodel/prop_tombstone10" /> 
+            <model name="xmodel/prop_tombstone11" />
+        </graveyard>
+
+        <!-- path carved out of the terrain -->
+        <trench chance="3" width="80" depth="60">
+          <texture name="stalingradwinter_snow01" />
+          <texture name="stalingradwinter_snow02" />
+        </trench>
+
+        <!-- dirt pile -->
+        <mound chance="1" >
+          <texture name="stalingradwinter_snow01" />
+          <texture name="stalingradwinter_snow02" />
+        </mound>
+
+    </regions>
+	
+	<!-- random models dispersed throughout the map to add some flavor.  We need to know how big a model
+	     is (radius, height) so that enough space can be reserved for it.  The "repeat" value allows
+	     for making a small patch of the model (good for grasses, bad for say, tractors) -->
+    <models limit="200">        
+        <model name="prop_woodstack1" radius="118" height="48" repeat="0" />
+        <model name="crate01_snow" radius="118" height="48" repeat="0" />
+        <model name="military_dragonstooth_snow" radius="60" height="60" repeat="0" />
+        <model name="military_sandbag_snow_curvedsection" radius="300" height="40" repeat="0" />
+        <model name="storage_tank01" radius="200" height="200" repeat="0" />
+    </models>
+	
+	<!-- The ladders are modeled as two brushes for rails and a brush for every rung. The "lip" value
+	     is how many units above where the ladder reaches that it peeks up over the top. -->
+    <ladders width="40" thickness="4" lip="4">
+        <texture name="stalingradwinter_rustbar_trim02" />
+        <texture name="stalingradwinter_pipe_b" />
+    </ladders>
+</cod2gen>
